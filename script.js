@@ -12,5 +12,9 @@ let cid = [
 ];
 
 const displayTotal = document.getElementById("total");
+const totalCash = document.getElementById("cash");
+const changeDueDisplay = document.getElementById("change-due");
+const penniesTotal = document.getElementById()
 
 displayTotal.innerText += ` $${price}`
+

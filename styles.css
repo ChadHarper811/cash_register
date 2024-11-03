@@ -85,12 +85,51 @@ body {
 }
 
 .register-body {
+    display: grid;
+    grid-template-columns: auto auto auto;
     justify-items: center;
     align-items: center;
     width: 300px;
     height: 125px;
     background-color: var(--blue);
     border-radius: 20px 20px 0 0;
+}
+
+.register-btns-left, .register-btns-right, .register-btns-mid {
+    display: grid;
+    gap: 5px;
+}
+
+.register-btns-left {
+    grid-template-columns: auto auto auto;
+}
+
+.register-btns-mid {
+    grid-template-columns: auto auto auto auto auto auto;
+}
+
+.register-btns-right {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 5px;
+}
+
+.button {
+    width: 12px;
+    height: 12px;
+    margin: 1px;
+}
+
+.left {
+    background-color: var(--light_gray);
+}
+
+.mid {
+    background-color: var(--orange);
+}
+
+.right {
+    background-color: var(--off_white);
 }
 
 .register-drawer-opening {

@@ -10,3 +10,7 @@ let cid = [
   ['TWENTY', 60],
   ['ONE HUNDRED', 100]
 ];
+
+const displayTotal = document.getElementById("total");
+
+displayTotal.innerText += ` $${price}`

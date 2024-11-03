@@ -62,3 +62,55 @@ body {
     background-color: var(--orange);
     cursor: pointer;
 }
+
+.display-container {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    border-radius: 15px 15px 0 0;
+    margin: auto;
+    border-bottom: 2px solid black;
+}
+
+.display {
+    display: flex;
+    width: 175px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.register-body {
+    justify-items: center;
+    align-items: center;
+    width: 300px;
+    height: 125px;
+    background-color: var(--blue);
+    border-radius: 20px 20px 0 0;
+}
+
+.register-drawer-opening {
+    width: 300px;
+    height: 40px;
+    background-color: var(--gray);
+    border: 4px solid var(--blue);
+}
+
+.register-drawer {
+    margin: -30px auto 0 auto;
+    justify-items: center;
+    align-items: center;
+    width: 280px;
+    height: 200px;
+    background-color: var(--blue);
+}
+
+.register-drwer-end {
+    width: 300px;
+    height: 10px;
+    background-color: var(--blue);
+}

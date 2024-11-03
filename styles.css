@@ -45,7 +45,7 @@ body {
     text-align: center;
 }
 
-.text-input {
+.cash {
     width: 275px;
     height: 25px;
     margin: 10px auto;
@@ -54,11 +54,11 @@ body {
     font-size: 20px;
 }
 
-.check-btn {
+.purchase-btn {
     font-size: 15px;
     font-family: 'Nova Square', sans-serif;
     padding: 5px;
-    color: var(--white);
+    color: var(--off_white);
     background-color: var(--orange);
     cursor: pointer;
 }

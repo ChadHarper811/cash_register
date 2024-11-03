@@ -5,6 +5,8 @@
     --orange: #c96700;
     --white: #f0f0f0;
     --off_white: #d6d6d6;
+    --money-background: #38613e;
+    --money-forground: #5fb36b;
 }
 
 * {
@@ -89,15 +91,15 @@ body {
     grid-template-columns: auto auto auto;
     justify-items: center;
     align-items: center;
-    width: 300px;
-    height: 125px;
+    width: 375px;
+    height: 150px;
     background-color: var(--blue);
     border-radius: 20px 20px 0 0;
 }
 
 .register-btns-left, .register-btns-right, .register-btns-mid {
     display: grid;
-    gap: 6px;
+    gap: 7px;
 }
 
 .register-btns-left {
@@ -113,7 +115,7 @@ body {
 }
 
 .button {
-    padding: 6px;
+    padding: 7px;
 }
 
 .left {
@@ -128,19 +130,23 @@ body {
     background-color: var(--off_white);
 }
 
+.space {
+    grid-column: 2/ span 5;
+}
+
 .register-drawer-opening {
-    width: 300px;
-    height: 40px;
+    width: 375px;
+    height: 60px;
     background-color: var(--gray);
-    border: 4px solid var(--blue);
+    border: 5px solid var(--blue);
 }
 
 .register-drawer {
-    margin: -30px auto 0 auto;
+    margin: -50px auto 0 auto;
     justify-items: center;
     align-items: center;
-    width: 280px;
-    height: 200px;
+    width: 355px;
+    height: 275px;
     padding-top: 5px;
     background-color: var(--blue);
 }
@@ -149,8 +155,8 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     gap: 5px;
-    width: 270px;
-    height: 125px;
+    width: 345px;
+    height: 185px;
     margin-bottom: 5px;
 }
 
@@ -163,8 +169,8 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 5px;
-    width: 270px;
-    height: 65px;
+    width: 345px;
+    height: 80px;
     border: 1px solid rgb(255, 255, 255, 0.1);
 }
 
@@ -174,7 +180,66 @@ body {
 }
 
 .register-drwer-end {
-    width: 300px;
+    width: 375px;
     height: 10px;
     background-color: var(--blue);
+}
+
+.dollar {
+    color: black;
+    margin: 32px -100px 0px -47px;
+	rotate: 90deg;
+	width: 140px;
+    display: grid;
+    grid-template-columns: 15px auto auto auto auto 15px;
+    gap: 1px;
+    background-color: #38613e;
+    border: 5px solid #5fb36b;
+}
+
+.dollar > div {
+    text-align: center;
+    padding: 4px;
+}
+
+.grid3 {
+    rotate: 270deg;
+	font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	background-color: #5fb36b;
+	grid-column: 3 / 5;
+	grid-row: 1 / 5;
+	border-radius: 30px;
+}
+
+.grid1 {
+    font-size: 12px;
+    border-radius: 0 0 15px 0;
+    background-color: #5fb36b;
+}
+
+.grid5{
+    font-size: 12px;
+    border-radius: 0 0  0 15px;
+    background-color: #5fb36b;
+}
+
+.grid10 {
+    font-size: 12px;
+    border-radius: 0 15px 0 0;
+    background-color: #5fb36b;
+    margin-bottom: -5px;
+}
+
+.grid13 {
+    font-size: 12px;
+    border-radius: 15px 0 0 0;
+    background-color: #5fb36b;
+    margin-bottom: -5px;
+}
+
+.grid2, .grid4, .grid6, .grid7, .grid8, .grid9, .grid11, .grid12{
+    background-color: #38613e;   
 }

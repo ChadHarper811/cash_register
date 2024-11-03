@@ -204,7 +204,7 @@ body {
 
 .grid3 {
     rotate: 270deg;
-	font-size: 25px;
+	font-size: 23px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -242,4 +242,16 @@ body {
 
 .grid2, .grid4, .grid6, .grid7, .grid8, .grid9, .grid11, .grid12{
     background-color: #38613e;   
+}
+
+.tens > .dollar > .grid3 {
+    font-size: 20px;
+}
+
+.twenties > .dollar > .grid3 {
+    font-size: 19px;
+}
+
+.hundreds > .dollar > .grid3 {
+    font-size: 16px;
 }

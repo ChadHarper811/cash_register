@@ -7,6 +7,7 @@
     --off_white: #d6d6d6;
     --money-background: #38613e;
     --money-forground: #5fb36b;
+    --coin: #ebeced;
 }
 
 * {
@@ -254,4 +255,52 @@ body {
 
 .hundreds > .dollar > .grid3 {
     font-size: 16px;
+}
+
+#penny {
+    width: 40px;
+    height: 40px;
+    background-color: #AD6F69;
+    border-radius: 30px;
+    font-size: 14px;
+    color: black;
+    justify-content: center;
+    align-content: center;
+    margin: -10px -100px 0px 8px;
+}
+
+#nickel {
+    width: 45px;
+    height: 45px;
+    background-color: var(--coin);
+    border-radius: 30px;
+    font-size: 15px;
+    color: black;
+    justify-content: center;
+    align-content: center;
+    margin: -10px -100px 0px 8px;
+}
+
+#dime {
+    width: 35px;
+    height: 35px;
+    background-color: var(--coin);
+    border-radius: 30px;
+    font-size: 13px;
+    color: black;
+    justify-content: center;
+    align-content: center;
+    margin: -10px -100px 0px 8px;
+}
+
+#quarter {
+    width: 50px;
+    height: 50px;
+    background-color: var(--coin);
+    border-radius: 30px;
+    font-size: 16px;
+    color: black;
+    justify-content: center;
+    align-content: center;
+    margin: -10px -100px 0px 8px;
 }

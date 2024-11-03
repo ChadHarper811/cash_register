@@ -97,7 +97,7 @@ body {
 
 .register-btns-left, .register-btns-right, .register-btns-mid {
     display: grid;
-    gap: 5px;
+    gap: 6px;
 }
 
 .register-btns-left {
@@ -109,15 +109,11 @@ body {
 }
 
 .register-btns-right {
-    display: grid;
     grid-template-columns: auto auto auto;
-    gap: 5px;
 }
 
 .button {
-    width: 12px;
-    height: 12px;
-    margin: 1px;
+    padding: 6px;
 }
 
 .left {
@@ -145,7 +141,36 @@ body {
     align-items: center;
     width: 280px;
     height: 200px;
+    padding-top: 5px;
     background-color: var(--blue);
+}
+
+.register-drawer-dollars {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 5px;
+    width: 270px;
+    height: 125px;
+    margin-bottom: 5px;
+}
+
+.dollars {
+    background-color: var(--light_gray);
+    padding: 10px;
+}
+
+.register-drawer-coins {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 5px;
+    width: 270px;
+    height: 65px;
+    border: 1px solid rgb(255, 255, 255, 0.1);
+}
+
+.coins {
+    background-color: var(--light_gray);
+    padding: 10px;
 }
 
 .register-drwer-end {

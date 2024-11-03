@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nova+Square:display=swap" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/2564131498.js" crossorigin="anonymous"></script>
+        <title>Palindrome Checker</title>
+    </head>
+
+    <body>
+        <main>
+            <div class="container">
+                <h1 class="header">Does it <span id="definition-target" class="definition-target">Palindrome</span>??</h1>
+
+                <div id="definition-div" class="definition-div hidden">
+                    <p>A <u><i>Palindrome</i></u> is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.</p>
+                    <i id="close-btn" class="fa-regular fa-circle-xmark" style="color: #FFD43B;"></i>
+                </div>
+                    
+                <div class="input-div">
+                    <label for="input">Input text here to check for palindromes:</label>
+                    <input type="text" id="text-input" class="text-input" value="" />
+                    <button class="check-btn" id="check-btn">Palindrome?</button>
+                    <div id="result" class="result-div "><p id="result-text"></p></div>
+                </div>
+            </div>
+            
+        </main>
+        <script src="script.js"></script>
+    </body>
+    
+</html>

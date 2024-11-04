@@ -29,15 +29,18 @@ displayTotal.innerText += ` $${price}`;
 
 const updateValues = change => {
     totalCash.value = "";
+
+    penniesTotal.innerText = `$${cid[0][1]}`;
+    nickelsTotal.innerText = `$${cid[1][1]}`;
+    dimesTotal.innerText = `$${cid[2][1]}`;
+    qurtersTotal.innerText = `$${cid[3][1]}`;
+    onesTotal.innerText = `$${cid[4][1]}`;
+    fivesTotal.innerText = `$${cid[5][1]}`;
+    tensTotal.innerText = `$${cid[6][1]}`;
+    twentiesTotal.innerText = `$${cid[7][1]}`;
+    hundredsTotal.innerText = `$${cid[8][1]}`;
 }
 
+updateValues();
 
-penniesTotal.innerText = `$${cid[0][1]}`;
-nickelsTotal.innerText = `$${cid[1][1]}`;
-dimesTotal.innerText = `$${cid[2][1]}`;
-qurtersTotal.innerText = `$${cid[3][1]}`;
-onesTotal.innerText = `$${cid[4][1]}`;
-fivesTotal.innerText = `$${cid[5][1]}`;
-tensTotal.innerText = `$${cid[6][1]}`;
-twentiesTotal.innerText = `$${cid[7][1]}`;
-hundredsTotal.innerText = `$${cid[8][1]}`;
+

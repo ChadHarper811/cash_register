@@ -34,9 +34,13 @@ const cashRegisterChange = () => {
   const pricetotal = Math.round(price * 100);
   const cashTotal = Math.round(Number(cashInput.value) * 100);
 
-  console.log(pricetotal);
-  console.log(cashTotal);
-  
+  if (pricetotal > cashTotal) {
+    alert("Customer does not have enough money to purchase the item");
+    return;
+  } else if (pricetotal === cashTotal) {
+    changeDueDisplay.innerHTML = "No change due - customer paid with exact cash";
+  }
+
   updateValues();
 }
 

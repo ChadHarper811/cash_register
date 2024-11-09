@@ -13,7 +13,7 @@ let cid = [
 
 const displayTotal = document.getElementById("total");
 const cashInput = document.getElementById("cash");
-const changeDueDisplay = document.getElementById("change-due");
+const changeDueText = document.getElementById("change-due");
 const purchaseBtn = document.getElementById("purchase-btn")
 const penniesTotal = document.getElementById("pennies-total");
 const nickelsTotal = document.getElementById("nickels-total");
@@ -25,26 +25,41 @@ const tensTotal = document.getElementById("tens-total");
 const twentiesTotal = document.getElementById("twenties-total");
 const hundredsTotal = document.getElementById("hundreds-total");
 
-const changeDue = (status, change) => {
-  changeDueDisplay.innerHTML = `<p>Status: ${status}</p>`;
-  changeDueDisplay.innerHTML += change.map(([currencyName, amount]) => `<p.> ${currencyName}: $${amount}</p>`).join("");
+const changeDueDisplay = (status, change) => {
+  changeDueText.innerHTML = `<p>Status: ${status}</p>`;
+  changeDueText.innerHTML += change.map(([currencyName, amount]) => `<p.> ${currencyName}: $${amount}</p>`).join("");
 }
 
 const cashRegisterChange = () => {
-  const pricetotal = Math.round(price * 100);
+  const priceTotal = Math.round(price * 100);
   const cashTotal = Math.round(Number(cashInput.value) * 100);
+  const changeDue = cashTotal - priceTotal;
+  let registerDrawerTotal = 0;
+  let descendingCid = cid.toReversed();
 
-  if (pricetotal > cashTotal) {
+  for (const currenyBlock of cid) {
+    registerDrawerTotal += (currenyBlock[1] * 100);
+  }
+
+  if (priceTotal > cashTotal) {
     alert("Customer does not have enough money to purchase the item");
     return;
-  } else if (pricetotal === cashTotal) {
-    changeDueDisplay.innerHTML = "No change due - customer paid with exact cash";
+  } else if (priceTotal === cashTotal) {
+    changeDueText.innerHTML = "No change due - customer paid with exact cash";
+    return;
+  } else if  (registerDrawerTotal < changeDue) {
+    changeDueDisplay("INSUFFICIENT_FUNDS", descendingCid)
+  } else if (registerDrawerTotal === changeDue) {
+    changeDueDisplay("CLOSED", descendingCid)
+  } else {
+    
+    changeDueDisplay("OPEN", descendingCid)
   }
 
   updateValues();
 }
 
-const updateValues = change => {
+const updateValues = changedue => {
     cashInput.value = "";
 
     displayTotal.innerText = ` $${price}`;

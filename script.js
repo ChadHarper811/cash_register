@@ -24,12 +24,19 @@ const tensTotal = document.getElementById("tens-total");
 const twentiesTotal = document.getElementById("twenties-total");
 const hundredsTotal = document.getElementById("hundreds-total");
 
+const changeDue = (status, change) => {
+  changeDueDisplay.innerHTML = `<p>Status: ${status}</p>`;
+  changeDueDisplay.innerHTML += change.map(([currencyName, amount]) => `<p.> ${currencyName}: $${amount}</p>`).join("");
+}
 
-displayTotal.innerText += ` $${price}`;
+const cashRegisterChange = () => {
+  
+}
 
 const updateValues = change => {
     totalCash.value = "";
 
+    displayTotal.innerText += ` $${price}`;
     penniesTotal.innerText = `$${cid[0][1]}`;
     nickelsTotal.innerText = `$${cid[1][1]}`;
     dimesTotal.innerText = `$${cid[2][1]}`;
@@ -41,6 +48,8 @@ const updateValues = change => {
     hundredsTotal.innerText = `$${cid[8][1]}`;
 }
 
-updateValues();
 
+
+updateValues();
+changeDue(open, 20)
 

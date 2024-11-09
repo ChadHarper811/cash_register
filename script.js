@@ -74,15 +74,16 @@ const cashRegisterChange = () => {
         cid[3][1] -= .25
       } else if ( change >= 10) {
         change -= 10
-        cid[3][1] -= .1
+        cid[2][1] -= .1
       } else if ( change >= 5) {
         change -= 5
-        cid[3][1] -= .05
+        cid[1][1] -= .05
       } else if ( change >= 1) {
         change -= 1
-        cid[3][1] -= .01
+        cid[0][1] -= .01
       } else {
         changeDueDisplay("OPEN", descendingCid)
+        return
       }
     }
   }

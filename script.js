@@ -53,46 +53,74 @@ const cashRegisterChange = () => {
   } else if (registerDrawerTotal === changeDue) {
     changeDueDisplay("CLOSED", descendingCid)
   } else {
-    console.log(change)
-    while (change >= 0) {
+    while (change >= 0 ) {
       if (change > 10000 && cid[8][1] > 0) {
         change -= 10000
-        console.log(change)
         cid[8][1] = Math.round((cid[8][1] * 100 - 10000)) / 100;
       } else if (change >= 2000 && cid[7][1] > 0) {
         change -= 2000
-        console.log(change)
         cid[7][1] = Math.round((cid[7][1] * 100 - 2000)) / 100;
       } else if ( change >= 1000 && cid[6][1] > 0) {
         change -= 1000
-        console.log(change)
         cid[6][1] = Math.round((cid[6][1] * 100 - 1000)) / 100;
       } else if ( change >= 500 && cid[5][1] > 0) {
         change -= 500
-        console.log(change)
         cid[5][1] = Math.round((cid[5][1] * 100 - 500)) / 100;
       } else if ( change >= 100 && cid[4][1] > 0) {
         change -= 100
-        console.log(change)
         cid[4][1] = Math.round((cid[4][1] * 100 - 100)) / 100;
       } else if ( change >= 25 && cid[3][1] > 0) {
         change -= 25
-        console.log(change)
         cid[3][1] = Math.round((cid[3][1] * 100 - 25)) / 100;
       } else if ( change >= 10 && cid[2][1] > 0) {
         change -= 10
-        console.log(change)
         cid[2][1] = Math.round((cid[2][1] * 100 - 10)) / 100;
       } else if ( change >= 5 && cid[1][1] > 0) {
         change -= 5
-        console.log(change)
         cid[1][1] = Math.round((cid[1][1] * 100 - 5)) / 100;
       } else if ( change >= 1 && cid[0][1] > 0) {
         change -= 1
-        console.log(change)
         cid[0][1] = Math.round((cid[0][1] * 100 - 1)) / 100;
+      } else { 
+        console.log(change)
+        if (change > 0) {
+          changeDueDisplay("INSUFFICIENT_FUNDS", descendingCid);
+          let returnChange = changeDue - change;
+          console.log(returnChange);
+          while (returnChange >= 0 ) {
+            if (returnChange > 10000 && cid[8][1] > 0) {
+              returnChange -= 10000
+              cid[8][1] = Math.round((cid[8][1] * 100 - 10000)) / 100;
+            } else if (returnChange >= 2000 && cid[7][1] > 0) {
+              returnChange -= 2000
+              cid[7][1] = Math.round((cid[7][1] * 100 - 2000)) / 100;
+            } else if ( returnChange >= 1000 && cid[6][1] > 0) {
+              returnChange -= 1000
+              cid[6][1] = Math.round((cid[6][1] * 100 - 1000)) / 100;
+            } else if ( returnChange >= 500 && cid[5][1] > 0) {
+              returnChange -= 500
+              cid[5][1] = Math.round((cid[5][1] * 100 - 500)) / 100;
+            } else if ( returnChange >= 100 && cid[4][1] > 0) {
+              returnChange -= 100
+              cid[4][1] = Math.round((cid[4][1] * 100 - 100)) / 100;
+            } else if ( returnChange >= 25 && cid[3][1] > 0) {
+              returnChange -= 25
+              cid[3][1] = Math.round((cid[3][1] * 100 - 25)) / 100;
+            } else if ( returnChange >= 10 && cid[2][1] > 0) {
+              returnChange -= 10
+              cid[2][1] = Math.round((cid[2][1] * 100 - 10)) / 100;
+            } else if ( returnChange >= 5 && cid[1][1] > 0) {
+              returnChange -= 5
+              cid[1][1] = Math.round((cid[1][1] * 100 - 5)) / 100;
+            } else if ( returnChange >= 1 && cid[0][1] > 0) {
+              returnChange -= 1
+              cid[0][1] = Math.round((cid[0][1] * 100 - 1)) / 100;
+            } else {}
+        } 
       } else {
-        changeDueDisplay("OPEN", descendingCid);
+          changeDueDisplay("OPEN", descendingCid);
+        }
+        // updateValues();
         return
       }
     }

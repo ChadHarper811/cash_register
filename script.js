@@ -57,28 +57,28 @@ const cashRegisterChange = () => {
       if (change > 10000) {
         change -= 10000;
         cid[8][1] -= 100
-      } else if ( change >= 2000) {
+      } else if (change >= 2000 && cid[7][1] > 0) {
         change -= 2000
         cid[7][1] -= 20
-      } else if ( change >= 1000) {
+      } else if ( change >= 1000 && cid[6][1] > 0) {
         change -= 1000
         cid[6][1] -= 10
-      } else if ( change >= 500) {
+      } else if ( change >= 500 && cid[5][1] > 0) {
         change -= 500
         cid[5][1] -= 5
-      } else if ( change >= 100) {
+      } else if ( change >= 100 && cid[4][1] > 0) {
         change -= 100
         cid[4][1] -= 1
-      } else if ( change >= 25) {
+      } else if ( change >= 25 && cid[3][1] > 0) {
         change -= 25
         cid[3][1] -= .25
-      } else if ( change >= 10) {
+      } else if ( change >= 10 && cid[2][1] > 0) {
         change -= 10
         cid[2][1] -= .1
-      } else if ( change >= 5) {
+      } else if ( change >= 5 && cid[1][1] > 0) {
         change -= 5
         cid[1][1] -= .05
-      } else if ( change >= 1) {
+      } else if ( change >= 1 && cid[0][1] > 0) {
         change -= 1
         cid[0][1] -= .01
       } else {
@@ -86,6 +86,7 @@ const cashRegisterChange = () => {
         return
       }
     }
+    
   }
 
   updateValues();

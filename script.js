@@ -35,6 +35,7 @@ const cashRegisterChange = () => {
   const cashTotal = Math.round(Number(cashInput.value) * 100);
   const changeDue = cashTotal - priceTotal;
   let change = changeDue;
+  let returnChange = changeDue - change;
   let registerDrawerTotal = 0;
   let descendingCid = cid.toReversed();
 
@@ -82,41 +83,41 @@ const cashRegisterChange = () => {
         change -= 1
         cid[0][1] = Math.round((cid[0][1] * 100 - 1)) / 100;
       } else { 
-        console.log(change)
+        console.log("change:" + change)
         if (change > 0) {
-          changeDueDisplay("INSUFFICIENT_FUNDS", descendingCid);
-          let returnChange = changeDue - change;
-          console.log(returnChange);
-          while (returnChange >= 0 ) {
-            if (returnChange > 10000 && cid[8][1] > 0) {
+          while (returnChange > 0 ) {
+            if (returnChange > 10000) {
               returnChange -= 10000
-              cid[8][1] = Math.round((cid[8][1] * 100 - 10000)) / 100;
-            } else if (returnChange >= 2000 && cid[7][1] > 0) {
+              cid[8][1] = Math.round((cid[8][1] * 100 + 10000)) / 100;
+            } else if (returnChange >= 2000) {
               returnChange -= 2000
-              cid[7][1] = Math.round((cid[7][1] * 100 - 2000)) / 100;
-            } else if ( returnChange >= 1000 && cid[6][1] > 0) {
+              cid[7][1] = Math.round((cid[7][1] * 100 + 2000)) / 100;
+            } else if ( returnChange >= 1000) {
               returnChange -= 1000
-              cid[6][1] = Math.round((cid[6][1] * 100 - 1000)) / 100;
-            } else if ( returnChange >= 500 && cid[5][1] > 0) {
+              cid[6][1] = Math.round((cid[6][1] * 100 + 1000)) / 100;
+            } else if ( returnChange >= 500) {
               returnChange -= 500
-              cid[5][1] = Math.round((cid[5][1] * 100 - 500)) / 100;
-            } else if ( returnChange >= 100 && cid[4][1] > 0) {
+              cid[5][1] = Math.round((cid[5][1] * 100 + 500)) / 100;
+            } else if ( returnChange >= 100) {
               returnChange -= 100
-              cid[4][1] = Math.round((cid[4][1] * 100 - 100)) / 100;
-            } else if ( returnChange >= 25 && cid[3][1] > 0) {
+              cid[4][1] = Math.round((cid[4][1] * 100 + 100)) / 100;
+            } else if ( returnChange >= 25) {
               returnChange -= 25
-              cid[3][1] = Math.round((cid[3][1] * 100 - 25)) / 100;
-            } else if ( returnChange >= 10 && cid[2][1] > 0) {
+              cid[3][1] = Math.round((cid[3][1] * 100 + 25)) / 100;
+            } else if ( returnChange >= 10) {
               returnChange -= 10
-              cid[2][1] = Math.round((cid[2][1] * 100 - 10)) / 100;
-            } else if ( returnChange >= 5 && cid[1][1] > 0) {
+              cid[2][1] = Math.round((cid[2][1] * 100 + 10)) / 100;
+            } else if ( returnChange >= 5) {
               returnChange -= 5
-              cid[1][1] = Math.round((cid[1][1] * 100 - 5)) / 100;
-            } else if ( returnChange >= 1 && cid[0][1] > 0) {
+              cid[1][1] = Math.round((cid[1][1] * 100 + 5)) / 100;
+            } else if ( returnChange >= 1) {
               returnChange -= 1
-              cid[0][1] = Math.round((cid[0][1] * 100 - 1)) / 100;
-            } else {}
+              cid[0][1] = Math.round((cid[0][1] * 100 + 1)) / 100;
+            } else {
+              console.log("returned")
+            }
         } 
+          changeDueDisplay("INSUFFICIENT_FUNDS", descendingCid);
       } else {
           changeDueDisplay("OPEN", descendingCid);
         }
@@ -131,7 +132,7 @@ const cashRegisterChange = () => {
 }
 
 const updateValues = changedue => {
-    cashInput.value = "";
+    // cashInput.value = "";
 
     displayTotal.innerText = ` $${price}`;
     penniesTotal.innerText = `$${cid[0][1]}`;

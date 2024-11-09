@@ -12,8 +12,9 @@ let cid = [
 ];
 
 const displayTotal = document.getElementById("total");
-const totalCash = document.getElementById("cash");
+const cashInput = document.getElementById("cash");
 const changeDueDisplay = document.getElementById("change-due");
+const purchaseBtn = document.getElementById("purchase-btn")
 const penniesTotal = document.getElementById("pennies-total");
 const nickelsTotal = document.getElementById("nickels-total");
 const dimesTotal = document.getElementById("dimes-total");
@@ -30,13 +31,19 @@ const changeDue = (status, change) => {
 }
 
 const cashRegisterChange = () => {
+  const pricetotal = Math.round(price * 100);
+  const cashTotal = Math.round(Number(cashInput.value) * 100);
+
+  console.log(pricetotal);
+  console.log(cashTotal);
   
+  updateValues();
 }
 
 const updateValues = change => {
-    totalCash.value = "";
+    cashInput.value = "";
 
-    displayTotal.innerText += ` $${price}`;
+    displayTotal.innerText = ` $${price}`;
     penniesTotal.innerText = `$${cid[0][1]}`;
     nickelsTotal.innerText = `$${cid[1][1]}`;
     dimesTotal.innerText = `$${cid[2][1]}`;
@@ -48,8 +55,8 @@ const updateValues = change => {
     hundredsTotal.innerText = `$${cid[8][1]}`;
 }
 
-
+purchaseBtn.addEventListener("click", cashRegisterChange);
 
 updateValues();
-changeDue(open, 20)
+
 

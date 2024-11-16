@@ -39,6 +39,8 @@ const cashRegisterChange = () => {
   let change = changeDue;
   let registerDrawerTotal = 0;
   let descendingCid = cid.toReversed();
+  let cidChange = cid.slice();
+  console.log(cidChange)
   let changeDisplay = [
     ["ONE HUNDRED", 0],
     ["TWENTY", 0],
@@ -65,6 +67,7 @@ const cashRegisterChange = () => {
   } else if (registerDrawerTotal === changeDue) {
     changeDueDisplay("CLOSED", descendingCid)
   } else {
+    
     while (change >= 0 ) {
       if (change > 10000 && cid[8][1] > 0) {
         change -= 10000
@@ -103,7 +106,7 @@ const cashRegisterChange = () => {
         cid[0][1] = Math.round((cid[0][1] * 100 - 1)) / 100;
         changeDisplay.some(ar => ar.includes("PENNY")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "PENNY")][1] += 1 : "" ;
       } else { 
-        console.log(changeDisplay)
+        console.log(cid)
         updateValues();
         let returnChange = changeDue - change;
         if (change > 0) {

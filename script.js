@@ -35,7 +35,6 @@ const cashRegisterChange = () => {
   const cashTotal = Math.round(Number(cashInput.value) * 100);
   const changeDue = cashTotal - priceTotal;
   let change = changeDue;
-  let returnChange = changeDue - change;
   let registerDrawerTotal = 0;
   let descendingCid = cid.toReversed();
 
@@ -84,8 +83,10 @@ const cashRegisterChange = () => {
         cid[0][1] = Math.round((cid[0][1] * 100 - 1)) / 100;
       } else { 
         console.log("change:" + change)
+        let returnChange = changeDue - change;
         if (change > 0) {
-          while (returnChange > 0 ) {
+          while (returnChange >= 0 ) {
+            console.log(returnChange)
             if (returnChange > 10000) {
               returnChange -= 10000
               cid[8][1] = Math.round((cid[8][1] * 100 + 10000)) / 100;
@@ -115,9 +116,10 @@ const cashRegisterChange = () => {
               cid[0][1] = Math.round((cid[0][1] * 100 + 1)) / 100;
             } else {
               console.log("returned")
+              changeDueDisplay("INSUFFICIENT_FUNDS", descendingCid);
+              return
             }
         } 
-          changeDueDisplay("INSUFFICIENT_FUNDS", descendingCid);
       } else {
           changeDueDisplay("OPEN", descendingCid);
         }

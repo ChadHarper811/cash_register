@@ -28,7 +28,7 @@ const hundredsTotal = document.getElementById("hundreds-total");
 const changeDueDisplay = (status, change) => {
 
   changeDueText.innerHTML = `<p>Status: ${status}</p>`;
-  changeDueText.innerHTML += change.map(([currencyName, amount]) => `<p.> ${currencyName}: $${amount}</p>`).join("");
+  changeDueText.innerHTML += change.filter(ar => !ar.includes(0)).map(([currencyName, amount]) => `<p.> ${currencyName}: $${amount/100}</p>`).join("");
 }
 
 const cashRegisterChange = () => {
@@ -40,6 +40,7 @@ const cashRegisterChange = () => {
   let descendingCid = cid.toReversed();
 
   let cidChange = cid.map(ar => ar.slice())
+
   
   let changeDisplay = [
     ["ONE HUNDRED", 0],
@@ -52,6 +53,8 @@ const cashRegisterChange = () => {
     ["NICKEL", 0],
     ["PENNY", 0],
   ];
+
+  
 
   for (const currenyBlock of cidChange) {
     registerDrawerTotal += (currenyBlock[1] * 100);
@@ -72,51 +75,49 @@ const cashRegisterChange = () => {
       if (change > 10000 && cidChange[8][1] > 0) {
         change -= 10000
         cidChange[8][1] = Math.round((cidChange[8][1] * 100 - 10000)) / 100;
-        changeDisplay.some(ar => ar.includes("NICKEL")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "ONE HUNDRED")][1] += 10000 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "ONE HUNDRED")][1] += 10000;
       } else if (change >= 2000 && cidChange[7][1] > 0) {
         change -= 2000
         cidChange[7][1] = Math.round((cidChange[7][1] * 100 - 2000)) / 100;
-        changeDisplay.some(ar => ar.includes("TWENTY")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "TWENTY")][1] += 2000 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "TWENTY")][1] += 2000;
       } else if ( change >= 1000 && cidChange[6][1] > 0) {
         change -= 1000
         cidChange[6][1] = Math.round((cidChange[6][1] * 100 - 1000)) / 100;
-        changeDisplay.some(ar => ar.includes("TEN")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "TEN")][1] += 1000 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "TEN")][1] += 1000;
       } else if ( change >= 500 && cidChange[5][1] > 0) {
         change -= 500
         cidChange[5][1] = Math.round((cidChange[5][1] * 100 - 500)) / 100;
-        changeDisplay.some(ar => ar.includes("FIVE")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "FIVE")][1] += 500 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "FIVE")][1] += 500;
       } else if ( change >= 100 && cidChange[4][1] > 0) {
         change -= 100
         cidChange[4][1] = Math.round((cidChange[4][1] * 100 - 100)) / 100;
-        changeDisplay.some(ar => ar.includes("ONE")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "ONE")][1] += 100 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "ONE")][1] += 100;
       } else if ( change >= 25 && cidChange[3][1] > 0) {
         change -= 25
         cidChange[3][1] = Math.round((cidChange[3][1] * 100 - 25)) / 100;
-        changeDisplay.some(ar => ar.includes("QUARTER")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "QUARTER")][1] += 25 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "QUARTER")][1] += 25;
       } else if ( change >= 10 && cidChange[2][1] > 0) {
         change -= 10
         cidChange[2][1] = Math.round((cidChange[2][1] * 100 - 10)) / 100;
-        changeDisplay.some(ar => ar.includes("DIME")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "DIME")][1] += 10 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "DIME")][1] += 10;
       } else if ( change >= 5 && cidChange[1][1] > 0) {
         change -= 5
         cidChange[1][1] = Math.round((cidChange[1][1] * 100 - 5)) / 100;
-        changeDisplay.some(ar => ar.includes("NICKEL")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "NICKEL")][1] += 5 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "NICKEL")][1] += 5
       } else if ( change >= 1 && cidChange[0][1] > 0) {
         change -= 1
         cidChange[0][1] = Math.round((cidChange[0][1] * 100 - 1)) / 100;
-        changeDisplay.some(ar => ar.includes("PENNY")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "PENNY")][1] += 1 : "" ;
+        changeDisplay[changeDisplay.findIndex(ar => ar[0] === "PENNY")][1] += 1
       } else { 
-        console.log(change)
-        console.log(cid)
-        console.log(cidChange)
+        console.log(changeDisplay)
         if (change > 0) {
           changeDueText.innerHTML = `<p>Status: INSUFFICIENT_FUNDS</p>`
           updateValues()
           cidChange = cid.map(ar => ar.slice());
         } else {
-        cid = cidChange.map(ar => ar.slice());
-        updateValues()
-        changeDueDisplay("OPEN", descendingCid);
+          cid = cidChange.map(ar => ar.slice());
+          updateValues()
+          changeDueDisplay("OPEN", changeDisplay);
         }
         return
       }

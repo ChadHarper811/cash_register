@@ -160,6 +160,12 @@ const updateValues = changedue => {
 
 purchaseBtn.addEventListener("click", cashRegisterChange );
 
+cashInput.addEventListener("keydown", event => {
+  if (event.key === `Enter`) {
+    cashRegisterChange();
+  }
+});
+
 updateValues();
 
 

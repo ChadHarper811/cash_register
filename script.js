@@ -41,8 +41,14 @@ const cashRegisterChange = () => {
   let descendingCid = cid.toReversed();
   let changeDisplay = [
     ["ONE HUNDRED", 0],
+    ["TWENTY", 0],
+    ["TEN", 0],
     ["FIVE", 0],
     ["ONE", 0],
+    ["QUARTER", 0],
+    ["DIME", 0],
+    ["NICKEL", 0],
+    ["PENNY", 0],
   ];
 
   for (const currenyBlock of cid) {
@@ -63,39 +69,39 @@ const cashRegisterChange = () => {
       if (change > 10000 && cid[8][1] > 0) {
         change -= 10000
         cid[8][1] = Math.round((cid[8][1] * 100 - 10000)) / 100;
-        changeDisplay.forEach((el) => el.includes("ONE HUNDRED") ? console.log(el) : console.log("no hundred"))
+        changeDisplay.some(ar => ar.includes("NICKEL")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "ONE HUNDRED")][1] += 10000 : "" ;
       } else if (change >= 2000 && cid[7][1] > 0) {
         change -= 2000
         cid[7][1] = Math.round((cid[7][1] * 100 - 2000)) / 100;
-        changeDisplay.forEach((el) => el.includes("TWENTY") ? console.log(el) : console.log("no twenty"))
+        changeDisplay.some(ar => ar.includes("TWENTY")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "TWENTY")][1] += 2000 : "" ;
       } else if ( change >= 1000 && cid[6][1] > 0) {
         change -= 1000
         cid[6][1] = Math.round((cid[6][1] * 100 - 1000)) / 100;
-        changeDisplay.forEach((el) => el.includes("TEN") ? console.log(el) : console.log("no ten"))
+        changeDisplay.some(ar => ar.includes("TEN")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "TEN")][1] += 1000 : "" ;
       } else if ( change >= 500 && cid[5][1] > 0) {
         change -= 500
         cid[5][1] = Math.round((cid[5][1] * 100 - 500)) / 100;
-        changeDisplay.forEach((el) => el.includes("FIVE") ? console.log(el) : console.log("no five"))
+        changeDisplay.some(ar => ar.includes("FIVE")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "FIVE")][1] += 500 : "" ;
       } else if ( change >= 100 && cid[4][1] > 0) {
         change -= 100
         cid[4][1] = Math.round((cid[4][1] * 100 - 100)) / 100;
-        changeDisplay.forEach((el) => el.includes("ONE") ? console.log(el) : console.log("no one"))
+        changeDisplay.some(ar => ar.includes("ONE")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "ONE")][1] += 100 : "" ;
       } else if ( change >= 25 && cid[3][1] > 0) {
         change -= 25
         cid[3][1] = Math.round((cid[3][1] * 100 - 25)) / 100;
-        changeDisplay.forEach((el) => el.includes("QUARTER") ? console.log(el) : console.log("no quarter"))
+        changeDisplay.some(ar => ar.includes("QUARTER")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "QUARTER")][1] += 25 : "" ;
       } else if ( change >= 10 && cid[2][1] > 0) {
         change -= 10
         cid[2][1] = Math.round((cid[2][1] * 100 - 10)) / 100;
-        changeDisplay.forEach((el) => el.includes("DIME") ? console.log(el) : console.log("no dime"))
+        changeDisplay.some(ar => ar.includes("DIME")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "DIME")][1] += 10 : "" ;
       } else if ( change >= 5 && cid[1][1] > 0) {
         change -= 5
         cid[1][1] = Math.round((cid[1][1] * 100 - 5)) / 100;
-        changeDisplay.forEach((el) => el.includes("NICKEL") ? console.log(el) : console.log("no nickel"))
+        changeDisplay.some(ar => ar.includes("NICKEL")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "NICKEL")][1] += 5 : "" ;
       } else if ( change >= 1 && cid[0][1] > 0) {
         change -= 1
         cid[0][1] = Math.round((cid[0][1] * 100 - 1)) / 100;
-        changeDisplay.forEach((el) => el.includes("PENNY") ? console.log(el) : console.log("no penny"))
+        changeDisplay.some(ar => ar.includes("PENNY")) ? changeDisplay[changeDisplay.findIndex(ar => ar[0] === "PENNY")][1] += 1 : "" ;
       } else { 
         console.log(changeDisplay)
         updateValues();
@@ -148,7 +154,7 @@ const cashRegisterChange = () => {
 }
 
 const updateValues = changedue => {
-    cashInput.value = "";
+    // cashInput.value = "";
 
     displayTotal.innerText = ` $${price}`;
     penniesTotal.innerText = `$${cid[0][1]}`;

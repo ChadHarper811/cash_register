@@ -11,6 +11,7 @@ let cid = [
   ['ONE HUNDRED', 100]
 ];
 
+
 const displayTotal = document.getElementById("total");
 const cashInput = document.getElementById("cash");
 const changeDueText = document.getElementById("change-due");
@@ -26,6 +27,7 @@ const twentiesTotal = document.getElementById("twenties-total");
 const hundredsTotal = document.getElementById("hundreds-total");
 
 const changeDueDisplay = (status, change) => {
+
   changeDueText.innerHTML = `<p>Status: ${status}</p>`;
   changeDueText.innerHTML += change.map(([currencyName, amount]) => `<p.> ${currencyName}: $${amount}</p>`).join("");
 }
@@ -37,6 +39,11 @@ const cashRegisterChange = () => {
   let change = changeDue;
   let registerDrawerTotal = 0;
   let descendingCid = cid.toReversed();
+  let changeDisplay = [
+    ["ONE HUNDRED", 0],
+    ["FIVE", 0],
+    ["ONE", 0],
+  ];
 
   for (const currenyBlock of cid) {
     registerDrawerTotal += (currenyBlock[1] * 100);
@@ -44,7 +51,6 @@ const cashRegisterChange = () => {
 
   if (priceTotal > cashTotal) {
     alert("Customer does not have enough money to purchase the item");
-    return;
   } else if (priceTotal === cashTotal) {
     changeDueText.innerHTML = "No change due - customer paid with exact cash";
     return;
@@ -57,32 +63,41 @@ const cashRegisterChange = () => {
       if (change > 10000 && cid[8][1] > 0) {
         change -= 10000
         cid[8][1] = Math.round((cid[8][1] * 100 - 10000)) / 100;
+        changeDisplay.forEach((el) => el.includes("ONE HUNDRED") ? console.log(el) : console.log("no hundred"))
       } else if (change >= 2000 && cid[7][1] > 0) {
         change -= 2000
         cid[7][1] = Math.round((cid[7][1] * 100 - 2000)) / 100;
+        changeDisplay.forEach((el) => el.includes("TWENTY") ? console.log(el) : console.log("no twenty"))
       } else if ( change >= 1000 && cid[6][1] > 0) {
         change -= 1000
         cid[6][1] = Math.round((cid[6][1] * 100 - 1000)) / 100;
+        changeDisplay.forEach((el) => el.includes("TEN") ? console.log(el) : console.log("no ten"))
       } else if ( change >= 500 && cid[5][1] > 0) {
         change -= 500
         cid[5][1] = Math.round((cid[5][1] * 100 - 500)) / 100;
+        changeDisplay.forEach((el) => el.includes("FIVE") ? console.log(el) : console.log("no five"))
       } else if ( change >= 100 && cid[4][1] > 0) {
         change -= 100
         cid[4][1] = Math.round((cid[4][1] * 100 - 100)) / 100;
+        changeDisplay.forEach((el) => el.includes("ONE") ? console.log(el) : console.log("no one"))
       } else if ( change >= 25 && cid[3][1] > 0) {
         change -= 25
         cid[3][1] = Math.round((cid[3][1] * 100 - 25)) / 100;
+        changeDisplay.forEach((el) => el.includes("QUARTER") ? console.log(el) : console.log("no quarter"))
       } else if ( change >= 10 && cid[2][1] > 0) {
         change -= 10
         cid[2][1] = Math.round((cid[2][1] * 100 - 10)) / 100;
+        changeDisplay.forEach((el) => el.includes("DIME") ? console.log(el) : console.log("no dime"))
       } else if ( change >= 5 && cid[1][1] > 0) {
         change -= 5
         cid[1][1] = Math.round((cid[1][1] * 100 - 5)) / 100;
+        changeDisplay.forEach((el) => el.includes("NICKEL") ? console.log(el) : console.log("no nickel"))
       } else if ( change >= 1 && cid[0][1] > 0) {
         change -= 1
         cid[0][1] = Math.round((cid[0][1] * 100 - 1)) / 100;
+        changeDisplay.forEach((el) => el.includes("PENNY") ? console.log(el) : console.log("no penny"))
       } else { 
-        console.log("change:" + change)
+        console.log(changeDisplay)
         updateValues();
         let returnChange = changeDue - change;
         if (change > 0) {

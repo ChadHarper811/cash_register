@@ -144,7 +144,7 @@ const cashRegisterChange = () => {
 }
 
 const updateValues = changedue => {
-    // cashInput.value = "";
+    cashInput.value = "";
 
     displayTotal.innerText = ` $${price}`;
     penniesTotal.innerText = `$${cid[0][1]}`;
